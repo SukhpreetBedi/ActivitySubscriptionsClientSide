@@ -1,20 +1,86 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+<div class="container">
+
+  <form [formGroup]="EmpSignUpForm" (ngSubmit)= "this.Save();">
+
+    <h3>Employee Activities SignUp Form</h3>
+    <div class="row">
+
+      <table class="table">
+        <tr>
+          <td>FirstName</td>
+          <td>
+            <input type="text" formControlName="firstName">
+            <div *ngIf="submitted && EmpSignUpForm.controls['firstName'].errors" class="text-danger">
+              <div *ngIf="EmpSignUpForm.controls['firstName'].errors['required']">FirstName is a required field</div>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>LastName</td>
+          <td><input type="text" formControlName="lastName">
+            <div *ngIf="submitted && EmpSignUpForm.controls['lastName'].errors" class="text-danger">
+              <div *ngIf="EmpSignUpForm.controls['lastName'].errors['required']">LastName is a required field</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>
+            <input type="text" formControlName="emailAddress">
+            <div *ngIf="submitted && EmpSignUpForm.controls['emailAddress'].errors" class="text-danger">
+              <div *ngIf="EmpSignUpForm.controls['emailAddress'].errors['required']">Email is a required field</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Activity</td>
+          <td>
+            <select formControlName="activityId"><option *ngFor="let a of activities" [ngValue]= "a.id">{{a.activityType}}</option></select>
+            <div *ngIf="submitted && EmpSignUpForm.controls['activityId'].errors" class="text-danger">
+              <div *ngIf="EmpSignUpForm.controls['activityId'].errors['required']">Activity is a required field</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Comments</td>
+          <td>
+            <input type="text" formControlName="comments">
+            <div *ngIf="submitted && EmpSignUpForm.controls['comments'].errors" class="text-danger">
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button type="submit" class="btn btn-primary">{{EventValue}}</button>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+    <div class="row" *ngIf="data?.length > 0">
+      <table class="table table-striped">
+        <tr>
+          <td>FirstName</td>
+
+          <td>LastName</td>
+          <td>Email</td>
+          <td>Activity</td>
+          <td>Comments</td>
+        </tr>
+
+        <tr *ngFor="let d of data">
+          <td>{{d.firstName}}</td>
+
+          <td>{{d.lastName}}</td>
+          <td>{{d.emailAddress}}</td>
+          <td>{{d.activity.activityType}}</td>
+          <td>{{d.comments}}</td>
+        </tr>
+      </table>
+    </div>
+  </form>
+
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
