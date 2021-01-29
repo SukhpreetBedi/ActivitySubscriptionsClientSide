@@ -10,7 +10,7 @@ export class SubscribersService {
       'Content-Type': 'application/json'
     })
   };
-  getSubscriber() {
+  getSubscribers() {
     const headers = new HttpHeaders().set('content-type', 'application/json');
     return this.http.get(this.apiUrl + '/Subscribers');
   }
