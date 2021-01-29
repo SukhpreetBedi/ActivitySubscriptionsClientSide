@@ -52,12 +52,12 @@ export class AppComponent implements OnInit {
     }
     this.subscribersService.postSubscriber(this.EmpSignUpForm.value).subscribe((data: any[]) => {
       this.data = data;
-      this.resetFrom();
+      this.resetForm();
     });
     console.log('Saved successfully');
   }
 
-  resetFrom() {
+  resetForm() {
     this.getSubscribers();
     this.EmpSignUpForm.reset();
     this.EventValue = 'Save';
