@@ -44,7 +44,7 @@ export class AppComponent implements OnInit {
     });
   }
   Save() {
-    console.log(this.EmpSignUpForm);
+    console.log('Starting to Save');
     this.submitted = true;
 
     if (this.EmpSignUpForm.invalid) {
@@ -54,7 +54,7 @@ export class AppComponent implements OnInit {
       this.data = data;
       this.resetFrom();
     });
-    console.log('end');
+    console.log('Saved successfully');
   }
 
   resetFrom() {
